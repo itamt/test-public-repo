@@ -40,4 +40,4 @@ jobs:
       - name: Echo with mask
         run: |
           echo "::add-mask::$MY_NAME"
-          echo "$MY_NAME"
+          echo "hello, $MY_NAME"
