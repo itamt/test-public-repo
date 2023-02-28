@@ -47,4 +47,13 @@ jobs:
             line 1
             line 2
         run: |
-          echo "${{ toJson(env.SOME_KEY) }}"
+          echo "${{ env.SOME_KEY }}"
+      - name: Use env JSON
+        env:
+          SOME_KEY: |-
+            {
+              "key1": "string",
+              "key2": 2
+            }
+        run: |
+          echo "${{ env.SOME_KEY }}"
