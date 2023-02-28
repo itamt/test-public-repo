@@ -20,13 +20,22 @@ on:
         default: null
         type: string
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   job1:
     runs-on: ubuntu-latest
+    env:
+      MY_NAME: "Octocat"
     steps:
-      - name: step1
+      - name: Echo context and input
         run: |
           echo "github = ${{ toJson(github) }}"
-          echo "choice = ${{ inputs.choice }}"
-          echo "str = ${{ inputs.str }}"
-        shell: bash
+          echo "inputs = ${{ toJson(inputs) }}"
+      - name: Echo secret for test
+        run: |
+          echo "secret ${{ secrets.DUMMY_SECRET }}"
+      - name: Echo with mask
+        run: echo "::add-mask::$MY_NAME"
