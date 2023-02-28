@@ -39,4 +39,5 @@ jobs:
           echo "secret ${{ secrets.DUMMY_SECRET }}"
       - name: Echo with mask
         run: |
-          echo "::add-mask::MY_NAME"
+          echo "::add-mask::$MY_NAME"
+          echo "$MY_NAME"
