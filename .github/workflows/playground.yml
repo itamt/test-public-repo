@@ -57,3 +57,12 @@ jobs:
             }
         run: |
           echo "${{ env.SOME_KEY }}"
+      - name: Use env JSON with secret
+        env:
+          SOME_KEY: |-
+            {
+              "key1": "${{ secrets.DUMMY_SECRET }}",
+              "key2": "prefix-${{ secrets.DUMMY_SECRET }}-suffix"
+            }
+        run: |
+          echo "${{ env.SOME_KEY }}"
