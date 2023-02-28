@@ -1,0 +1,32 @@
+name: playground
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      choice:
+        required: true
+        default: all
+        type: choice
+        options:
+          - apple
+          - banana
+          - orange
+      str:
+        required: false
+        default: null
+        type: string
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1
+        run: |
+          echo "github = ${{ toJson(github) }}"
+          echo "choice = ${{ inputs.choice }}"
+          echo "str = ${{ inputs.str }}"
+        shell: bash
