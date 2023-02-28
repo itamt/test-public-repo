@@ -41,3 +41,10 @@ jobs:
         run: |
           echo "::add-mask::$MY_NAME"
           echo "hello, $MY_NAME"
+      - name: Use env
+        env:
+          SOME_KEY: |-
+            line 1
+            line 2
+        run: |
+          echo "${{ toJson(env.SOME_KEY) }}"
