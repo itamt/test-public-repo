@@ -59,6 +59,7 @@ jobs:
           echo "${{ env.SOME_KEY }}"
           echo "${{ fromJson(env.SOME_KEY).key1 }}"
           echo "${{ fromJson(env.SOME_KEY).key2 }}"
+          echo "${{ fromJson(env.SOME_KEY)['key1'] }}"
       - name: Use env JSON with secret
         env:
           SOME_KEY: |-
@@ -73,8 +74,8 @@ jobs:
           SOME_KEY: ${{ secrets['DUMMY_SECRET'] }}
         run: |
           echo "${{ env.SOME_KEY }}"
-      - name: Use broken JSON
-        env:
-          SOME_KEY: '{"key": }'
-        run: |
-          echo "${{ fromJson(env.SOME_KEY) }}"
+      #- name: Use broken JSON
+      #  env:
+      #    SOME_KEY: '{"key": }'
+      #  run: |
+      #    echo "${{ fromJson(env.SOME_KEY) }}"
