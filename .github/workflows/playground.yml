@@ -75,6 +75,6 @@ jobs:
           echo "${{ env.SOME_KEY }}"
       - name: Use broken JSON
         env:
-          SOME_KEY: {"key": }
+          SOME_KEY: '{"key": }'
         run: |
           echo "${{ fromJson(env.SOME_KEY) }}"
