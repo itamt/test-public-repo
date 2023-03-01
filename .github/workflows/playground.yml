@@ -60,6 +60,8 @@ jobs:
           echo "${{ fromJson(env.SOME_KEY).key1 }}"
           echo "${{ fromJson(env.SOME_KEY).key2 }}"
           echo "${{ fromJson(env.SOME_KEY)['key1'] }}"
+          echo "${{ fromJson(env.SOME_KEY).invalid }}"
+          echo "${{ fromJson(env.SOME_KEY)['invalid'] }}"
       - name: Use env JSON with secret
         env:
           SOME_KEY: |-
