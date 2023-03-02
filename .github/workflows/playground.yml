@@ -81,3 +81,9 @@ jobs:
       #    SOME_KEY: '{"key": }'
       #  run: |
       #    echo "${{ fromJson(env.SOME_KEY) }}"
+      - name: Use composite action
+        env:
+          FOO: foo
+        uses: ./.github/actions/sample
+        with:
+          message: hello

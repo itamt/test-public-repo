@@ -1,0 +1,16 @@
+name: sample
+
+description: sample
+
+inputs:
+  message:
+    description: input message
+    required: false
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Echo env
+      run: |
+        echo "${{ env.FOO }}"
+      shell: bash
