@@ -104,5 +104,5 @@ jobs:
           :
         shell: bash
       - name: Run nothing 2
-        run: :
+        run: ':'
         shell: bash
