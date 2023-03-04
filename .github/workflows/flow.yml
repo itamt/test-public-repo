@@ -26,9 +26,9 @@ defaults:
 
 jobs:
   job1:
+    if: inputs.do-job1
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: inputs.do-job1
     steps:
       - name: Raise error
         if: ${{ ! inputs.job1-success }}
