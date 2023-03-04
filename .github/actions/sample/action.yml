@@ -14,3 +14,7 @@ runs:
       run: |
         echo "${{ env.FOO }}"
       shell: bash
+    - name: Echo inputs
+      run: |
+        echo "${{ toJson(inputs) }}"
+      shell: bash
