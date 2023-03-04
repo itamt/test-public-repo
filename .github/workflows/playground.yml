@@ -103,6 +103,10 @@ jobs:
         uses: ./.github/actions/sample
         with:
           message: null
+      - name: Use composite action 5
+        uses: ./.github/actions/sample
+        with:
+          message: false
 
   job3:
     runs-on: ubuntu-latest
