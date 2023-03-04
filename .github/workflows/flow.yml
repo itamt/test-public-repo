@@ -31,7 +31,7 @@ jobs:
     if: inputs.do-job1
     steps:
       - name: Raise error
-        if: ${{ ! inputs.job1-success }
+        if: ${{ ! inputs.job1-success }}
         run: |
           exit 1
 
