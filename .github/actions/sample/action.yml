@@ -16,5 +16,5 @@ runs:
       shell: bash
     - name: Echo inputs
       run: |
-        echo "${{ toJson(inputs) }}"
+        echo '${{ toJson(inputs) }}'
       shell: bash
