@@ -95,11 +95,11 @@ jobs:
           message: hello
       - name: Use composite action 2
         uses: ./.github/actions/sample
-      - name: Use composite action 2
+      - name: Use composite action 3
         uses: ./.github/actions/sample
         with:
           message: ''
-      - name: Use composite action 2
+      - name: Use composite action 4
         uses: ./.github/actions/sample
         with:
           message: null
