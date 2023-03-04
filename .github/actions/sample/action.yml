@@ -6,6 +6,9 @@ inputs:
   message:
     description: input message
     required: false
+  value-with-default:
+    description: default value test
+    default: 'true'
 
 runs:
   using: 'composite'
@@ -17,4 +20,16 @@ runs:
     - name: Echo inputs
       run: |
         echo '${{ toJson(inputs) }}'
+      shell: bash
+    - name: Expression
+      env:
+        DOUBLE_QUOTE: "${{ inputs.value-with-default }}"
+        SINGLE_QUOTE: '${{ inputs.value-with-default }}'
+        NO_QUOTE: ${{ inputs.value-with-default }}
+        NO_BRACKET: inputs.value-with-default
+      run: |
+        echo '${{ env.DOUBLE_QUOTE }}'
+        echo '${{ env.SINGLE_QUOTE }}'
+        echo '${{ env.NO_QUOTE }}'
+        echo '${{ env.NO_BRACKET }}'
       shell: bash
