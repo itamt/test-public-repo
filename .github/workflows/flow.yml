@@ -1,0 +1,48 @@
+name: flow
+
+on:
+  workflow_dispatch:
+    inputs:
+      do-job1:
+        type: boolean
+        default: true
+        description: Do job1?
+      do-job2:
+        type: boolean
+        default: true
+        description: Do job2?
+      job1-success:
+        type: boolean
+        default: true
+        description: Will job1 succeed?
+      job2-success:
+        type: boolean
+        default: true
+        description: Will job2 succeed?
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: inputs.do-job1
+    steps:
+      - name: Raise error
+        if: ! inputs.job1-success
+        run: |
+          exit 1
+
+  job2:
+    needs:
+      - job1
+    if: inputs.job2 && ! failure()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Raise error
+        if: ! inputs.job2-success
+        run: |
+          exit 1
