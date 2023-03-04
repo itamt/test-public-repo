@@ -23,10 +23,10 @@ runs:
       shell: bash
     - name: Expression
       env:
-        DOUBLE_QUOTE: "${{ inputs.value-with-default }}"
-        SINGLE_QUOTE: '${{ inputs.value-with-default }}'
-        NO_QUOTE: ${{ inputs.value-with-default }}
-        NO_BRACKET: inputs.value-with-default
+        DOUBLE_QUOTE: "${{ inputs.value-with-default }}" # => 'true'
+        SINGLE_QUOTE: '${{ inputs.value-with-default }}' # => 'true'
+        NO_QUOTE: ${{ inputs.value-with-default }} # => 'true'
+        NO_BRACKET: inputs.value-with-default # => 'inputs.value-with-default'
       run: |
         echo '${{ env.DOUBLE_QUOTE }}'
         echo '${{ env.SINGLE_QUOTE }}'
