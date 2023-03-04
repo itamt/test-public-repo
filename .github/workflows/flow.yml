@@ -11,6 +11,10 @@ on:
         type: boolean
         default: true
         description: Do job2?
+      do-job3:
+        type: boolean
+        default: true
+        description: Do job3?
       job1-success:
         type: boolean
         default: true
@@ -19,6 +23,10 @@ on:
         type: boolean
         default: true
         description: Will job2 succeed?
+      job3-success:
+        type: boolean
+        default: true
+        description: Will job3 succeed?
 
 defaults:
   run:
@@ -35,7 +43,7 @@ jobs:
         run: |
           exit 1
 
-  job2:
+  job2-a:
     needs:
       - job1
     if: inputs.do-job2 && ! failure()
@@ -44,5 +52,30 @@ jobs:
     steps:
       - name: Raise error
         if: ${{ ! inputs.job2-success }}
+        run: |
+          exit 1
+
+  job2-b:
+    needs:
+      - job1
+    if: inputs.do-job2 && ! failure()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Raise error
+        if: ${{ ! inputs.job2-success }}
+        run: |
+          exit 1
+
+  job3:
+    needs:
+      - job2-a
+      - job2-b
+    if: inputs.do-job3 && ! failure()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Raise error
+        if: ${{ ! inputs.job3-success }}
         run: |
           exit 1
