@@ -93,3 +93,16 @@ jobs:
         uses: ./.github/actions/sample
         with:
           message: hello
+
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run nothing
+        run: |
+          :
+        shell: bash
+      - name: Run nothing 2
+        run: :
+        shell: bash
