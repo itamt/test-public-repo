@@ -93,6 +93,16 @@ jobs:
         uses: ./.github/actions/sample
         with:
           message: hello
+      - name: Use composite action 2
+        uses: ./.github/actions/sample
+      - name: Use composite action 2
+        uses: ./.github/actions/sample
+        with:
+          message: ''
+      - name: Use composite action 2
+        uses: ./.github/actions/sample
+        with:
+          message: null
 
   job3:
     runs-on: ubuntu-latest
