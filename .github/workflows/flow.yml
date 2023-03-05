@@ -2,6 +2,8 @@ name: flow
 
 on:
   workflow_dispatch:
+    branches:
+      - main
     inputs:
       do-job1:
         type: boolean
